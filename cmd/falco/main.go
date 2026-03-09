@@ -535,7 +535,8 @@ func runTest(runner *Runner, rslv resolver.Resolver) error {
 			return ErrExit
 		}
 		if out := runner.config.Testing.CoverageOut; out != "" {
-			if err := writeLCOVFile(factory.Coverage, out); err != nil {
+			format := runner.config.Testing.CoverageFormat
+			if err := writeCoverageFile(factory.Coverage, out, format); err != nil {
 				writeln(red, "Failed to write coverage report: %s", err.Error())
 				return ErrExit
 			}

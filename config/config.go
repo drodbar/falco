@@ -63,14 +63,15 @@ type SimulatorConfig struct {
 
 // Testing configuration
 type TestConfig struct {
-	Timeout      int      `cli:"timeout" yaml:"timeout"`
-	Filter       string   `cli:"f,filter" default:"*.test.vcl"`
-	Tags         []string `cli:"t,tag"`
-	IncludePaths []string // Copy from root field
-	OverrideHost string   `yaml:"host" cli:"host"`
-	Watch        bool     `cli:"w,watch"`      // Enable only in CLI option
-	Coverage     bool     `cli:"coverage"`     // Enable only in CLI option
-	CoverageOut  string   `cli:"coverage-out"` // Enable only in CLI option
+	Timeout        int      `cli:"timeout" yaml:"timeout"`
+	Filter         string   `cli:"f,filter" default:"*.test.vcl"`
+	Tags           []string `cli:"t,tag"`
+	IncludePaths   []string // Copy from root field
+	OverrideHost   string   `yaml:"host" cli:"host"`
+	Watch          bool     `cli:"w,watch"`           // Enable only in CLI option
+	Coverage       bool     `cli:"coverage"`          // Enable only in CLI option
+	CoverageOut    string   `cli:"coverage-out"`      // Enable only in CLI option
+	CoverageFormat string   `cli:"coverage-format"`   // lcov or generic-xml; defaults to lcov
 
 	// Override Request configuration
 	OverrideRequest *RequestConfig
