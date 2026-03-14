@@ -154,6 +154,7 @@ func (t *Tester) run(testFile string) (*TestResult, error) {
 					errChan <- errors.WithStack(err)
 					return
 				}
+				i.MergeBackends(defs.Backends)
 				metadata := getTestMetadata(st)
 				for _, s := range metadata.Scopes {
 					// Attach new debugger for each test suite
@@ -222,6 +223,7 @@ func (t *Tester) runDescribedTests(
 	if err := i.TestProcessInit(mockRequest); err != nil {
 		return cases, errors.WithStack(err)
 	}
+	i.MergeBackends(defs.Backends)
 
 	defer func() {
 		// Remove all stored subroutines

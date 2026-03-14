@@ -66,6 +66,14 @@ func (i *Interpreter) TestProcessInit(r *http.Request) error {
 	return nil
 }
 
+func (i *Interpreter) MergeBackends(backends map[string]*value.Backend) {
+	for name, b := range backends {
+		if _, exists := i.ctx.Backends[name]; !exists {
+			i.ctx.Backends[name] = b
+		}
+	}
+}
+
 func (i *Interpreter) ProcessTestSubroutine(scope icontext.Scope, sub *ast.SubroutineDeclaration) error {
 	i.SetScope(scope)
 	if _, err := i.ProcessSubroutine(sub, DebugPass, nil); err != nil {
