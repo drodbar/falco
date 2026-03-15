@@ -204,6 +204,14 @@ func testingFunctions(i *interpreter.Interpreter, defs *Definiions) Functions {
 				return false
 			},
 		},
+		"testing.reset_hash": {
+			Scope:            allScope,
+			Call:             Testing_reset_hash,
+			CanStatementCall: true,
+			IsIdentArgument: func(i int) bool {
+				return false
+			},
+		},
 	}
 }
 
