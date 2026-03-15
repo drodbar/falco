@@ -215,7 +215,7 @@ func New(options ...Option) *Context {
 		Stale:                           &value.Boolean{},
 		StaleIsError:                    &value.Boolean{},
 		StaleIsRevalidating:             &value.Boolean{},
-		StaleContents:                   &value.String{},
+		StaleContents:                   &value.String{IsNotSet: true},
 		FastlyError:                     &value.String{},
 		ClientGeoIpOverride:             &value.String{},
 		ClientSocketCongestionAlgorithm: &value.String{Value: "cubic"},
